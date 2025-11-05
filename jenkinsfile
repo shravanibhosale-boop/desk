@@ -2,30 +2,27 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo '🏗️ Build Stage Started...'
-                bat 'echo Compiling source code...'
-                bat 'echo Build successful!'
+                echo '📦 Cloning GitHub repository...'
+                checkout scm
             }
         }
 
-        stage('Deploy') {
+        stage('Build') {
             steps {
-                echo '🚀 Deploy Stage Started...'
-                bat 'echo Deploying application to server...'
-                bat 'echo Deployment complete!'
+                echo '🏗️ Starting the build process...'
+                bat 'echo Simulating code build...'
             }
         }
     }
 
     post {
         success {
-            echo '✅ Pipeline completed successfully!'
+            echo '✅ Build completed successfully!'
         }
         failure {
-            echo '❌ Pipeline failed!'
+            echo '❌ Build failed! Check errors above.'
         }
     }
 }
-
