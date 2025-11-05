@@ -1,1 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo '🏗️ Build Stage Started...'
+                bat 'echo Compiling source code...'
+                bat 'echo Build successful!'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo '🚀 Deploy Stage Started...'
+                bat 'echo Deploying application to server...'
+                bat 'echo Deployment complete!'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Pipeline completed successfully!'
+        }
+        failure {
+            echo '❌ Pipeline failed!'
+        }
+    }
+}
 
